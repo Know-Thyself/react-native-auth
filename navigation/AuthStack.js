@@ -1,5 +1,5 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
-import LoginScreen from '../screens/LoginScreen'
+import SigninScreen from '../screens/SigninScreen'
 import SignupScreen from '../screens/SignupScreen'
 import { Colors } from '../constants/styles'
 
@@ -14,7 +14,7 @@ const AuthStack = () => {
         contentStyle: { backgroundColor: Colors.primary100 },
       }}
     >
-      <Stack.Screen name='Login' component={LoginScreen} />
+      <Stack.Screen name='Signin' component={SigninScreen} />
       <Stack.Screen name='Signup' component={SignupScreen} />
     </Stack.Navigator>
   )

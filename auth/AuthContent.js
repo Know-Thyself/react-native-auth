@@ -16,7 +16,7 @@ const AuthContent = ({ isLogin, onAuthenticate }) => {
   const navigation = useNavigation()
 
   function switchAuthModeHandler() {
-    isLogin ? navigation.replace('Signup') : navigation.replace('Login')
+    isLogin ? navigation.replace('Signup') : navigation.replace('Signin')
   }
 
   function submitHandler(credentials) {
@@ -56,7 +56,9 @@ const AuthContent = ({ isLogin, onAuthenticate }) => {
       />
       <View style={styles.buttons}>
         <FlatButton onPress={switchAuthModeHandler}>
-          {isLogin ? 'Create a new user' : 'Log in instead'}
+          {isLogin
+            ? `Don't have an account? Create a new user account`
+            : 'Already have an account? Sign in instead'}
         </FlatButton>
       </View>
     </View>

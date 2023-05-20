@@ -1,29 +1,31 @@
 import { useState } from 'react'
 import AuthContent from '../auth/AuthContent'
-import { createUser } from '../utils/auth'
+import { signIn } from '../utils/auth'
 import LoadingOverlay from '../components/ui/LoadingOverlay'
 import { Alert } from 'react-native'
 
-const SignupScreen = () => {
+const LoginScreen = () => {
   const [isAuthenticating, setIsAuthenticating] = useState(false)
 
-  const signUpHandler = async ({ email, password }) => {
+  const signInHandler = async ({ email, password }) => {
     setIsAuthenticating(true)
     try {
-      await createUser(email, password)
+      await signIn(email, password)
     } catch (error) {
+      console.error(error)
       Alert.alert(
-        'Authentication failed',
-        'Please enter a valid email and password or try again later'
+        'Authentication failed!',
+        'Please check your email and password'
       )
     }
     setIsAuthenticating(false)
   }
+
   return isAuthenticating ? (
     <LoadingOverlay message='Creating user account...' />
   ) : (
-    <AuthContent onAuthenticate={signUpHandler} isLogin={false} />
+    <AuthContent onAuthenticate={signInHandler} isLogin />
   )
 }
 
-export default SignupScreen
+export default LoginScreen

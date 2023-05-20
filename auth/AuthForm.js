@@ -81,7 +81,7 @@ const AuthForm = ({ isLogin, onSubmit, credentialsInvalid }) => {
         )}
         <View style={styles.buttons}>
           <Button onPress={submitHandler}>
-            {isLogin ? 'Log In' : 'Sign Up'}
+            {isLogin ? 'Sign In' : 'Sign Up'}
           </Button>
         </View>
       </View>
