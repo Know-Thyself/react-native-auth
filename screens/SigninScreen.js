@@ -1,18 +1,20 @@
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import AuthContent from '../auth/AuthContent'
 import { signIn } from '../utils/auth'
 import LoadingOverlay from '../components/ui/LoadingOverlay'
 import { Alert } from 'react-native'
+import { AuthContext } from '../context/authContext'
 
 const LoginScreen = () => {
   const [isAuthenticating, setIsAuthenticating] = useState(false)
+  const { authenticate } = useContext(AuthContext)
 
   const signInHandler = async ({ email, password }) => {
     setIsAuthenticating(true)
     try {
-      await signIn(email, password)
+      const token = await signIn(email, password)
+      authenticate(token)
     } catch (error) {
-      console.error(error)
       Alert.alert(
         'Authentication failed!',
         'Please check your email and password'

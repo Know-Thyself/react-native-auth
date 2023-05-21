@@ -8,13 +8,14 @@ const authenticate = async (mode, email, password) => {
     password,
     returnSecureToken: true,
   })
-  console.log(response.data)
+  const token = response.data.idToken
+  return token
 }
 
-export const createUser = async (email, password) => {
-  const response = await authenticate('signUp', email, password)
+export const createUser = (email, password) => {
+  return authenticate('signUp', email, password)
 }
 
-export const signIn = async (email, password) => {
-  const response = await authenticate('signInWithPassword', email, password)
+export const signIn = (email, password) => {
+  return authenticate('signInWithPassword', email, password)
 }
