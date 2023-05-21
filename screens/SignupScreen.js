@@ -19,8 +19,8 @@ const SignupScreen = () => {
         'Authentication failed',
         'Please enter a valid email and password or try again later'
       )
+      setIsAuthenticating(false)
     }
-    setIsAuthenticating(false)
   }
   return isAuthenticating ? (
     <LoadingOverlay message='Creating user account...' />

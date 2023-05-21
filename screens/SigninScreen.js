@@ -19,8 +19,8 @@ const LoginScreen = () => {
         'Authentication failed!',
         'Please check your email and password'
       )
+      setIsAuthenticating(false)
     }
-    setIsAuthenticating(false)
   }
 
   return isAuthenticating ? (
