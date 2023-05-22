@@ -11,11 +11,17 @@ export const AuthContext = createContext({
 function AuthContextProvider({ children }) {
   const [authToken, setAuthToken] = useState()
 
+  // automatically signing the user in if their token has been stored
   useEffect(() => {
     const retrieveToken = async () => {
-      const storedToken = await AsyncStorage.getItem('token')
-      if (storedToken) {
-        setAuthToken(storedToken)
+      try {
+        const storedToken = await AsyncStorage.getItem('token')
+        if (storedToken) {
+          setAuthToken(storedToken)
+          authenticate(storedToken)
+        }
+      } catch (error) {
+        console.warn(error)
       }
     }
     retrieveToken()
